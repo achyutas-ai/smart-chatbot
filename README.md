@@ -20,6 +20,27 @@ Traditional chatbots lack context retention and struggle with coherent multi-tur
 
 The architecture emphasizes easy replacement of the LLM backend and extensible memory strategies.
 
+### 📊 Architecture Diagram
+
+```mermaid
+graph LR
+    subgraph App
+        A[app.py]
+    end
+    subgraph Chatbot Package
+        B[llm.py]
+        C[chain.py]
+        D[memory.py]
+        E[prompt.py]
+    end
+    A --> C
+    C --> D
+    C --> E
+    C --> B
+    B -->|response| C
+    D -->|history| C
+    E -->|template| B
+```
 ## 🚀 Running the Project
 ### Prerequisites
 - Docker installed on your machine (Desktop, Engine, etc.)
